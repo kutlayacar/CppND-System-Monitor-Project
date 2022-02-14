@@ -29,22 +29,34 @@ std::string Kernel();
 
 // CPU
 enum CPUStates {
-  kUser_ = 0,
-  kNice_,
-  kSystem_,
-  kIdle_,
-  kIOwait_,
-  kIRQ_,
-  kSoftIRQ_,
-  kSteal_,
-  kGuest_,
-  kGuestNice_
+  kUser_        = 0,
+  kNice_        = 1,
+  kSystem_      = 2,
+  kIdle_        = 3,
+  kIOwait_      = 4,
+  kIRQ_         = 5,
+  kSoftIRQ_     = 6,
+  kSteal_       = 7,
+  kGuest_       = 8,
+  kGuestNice_   = 9
 };
 std::vector<std::string> CpuUtilization();
+std::vector<long> CpuLong();
+float ProcCpuUtilization(int pid);
 long Jiffies();
 long ActiveJiffies();
 long ActiveJiffies(int pid);
 long IdleJiffies();
+
+// Process Times
+enum ProcessTime { // Reference: https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat/16736599#16736599
+  
+  utime_      = 13, // #14
+  stime_      = 14, // #15
+  cutime_     = 15, // #16
+  cstime_     = 16, // #17
+  starttime_  = 21  // #22
+};
 
 // Processes
 std::string Command(int pid);
