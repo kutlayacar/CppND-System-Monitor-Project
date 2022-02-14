@@ -22,21 +22,21 @@ int Process::Pid() const { return pid_; }
 // TODO: Return this process's CPU utilization
 float Process::CpuUtilization() { 
     
-    cpuUtil_ = LinuxParser::ProcCpuUtilization(pid_);
+    cpuUtil_ = LinuxParser::ProcCpuUtilization(Pid());
     return cpuUtil_;
  }
 
 // TODO: Return the command that generated this process
-string Process::Command() { return LinuxParser::Command(pid_); }
+string Process::Command() { return LinuxParser::Command(Pid()); }
 
 // TODO: Return this process's memory utilization
-string Process::Ram() const { return LinuxParser::Ram(pid_); }
+string Process::Ram() const { return LinuxParser::Ram(Pid()); }
 
 // TODO: Return the user (name) that generated this process
-string Process::User() { return LinuxParser::User(pid_); }
+string Process::User() { return LinuxParser::User(Pid()); }
 
 // TODO: Return the age of this process (in seconds)
-long int Process::UpTime() { return LinuxParser::UpTime(pid_); }
+long int Process::UpTime() { return LinuxParser::UpTime(Pid()); }
 
 // TODO: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
